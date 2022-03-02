@@ -1,0 +1,17 @@
+table, th{
+    
+    border: 1px solid black;
+    border-collapse: collapse;
+    background-color: aquamarine;
+    text-align: center;
+    top: 0;
+    text-decoration: none;
+    padding: 6px 10px;
+    
+}
+
+table{
+    width: 100%;  
+}
+
+
