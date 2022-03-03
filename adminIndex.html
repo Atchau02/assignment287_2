@@ -32,8 +32,35 @@
         
         <br><br>
         <label for="submit_index">Submit: </label>
-        <input type="submit" id="submit_index">
+        <input type="submit" id="submit_index" onclick="submitIndex()">
         
+        <script>
+            function submitIndex() {
+
+                const Statement = document.getElementById('Pro_Statement');
+                const bio = document.getElementById('Brief_bio');
+
+                sessionStorage.setItem("statement", Statement.value)
+                sessionStorage.setItem("bio", bio.value)
+
+                let data =
+                'Professional Statement: ' + sessionStorage.getItem("statement") + ' \r\r\n' +  
+                'Brief Biographie: ' + sessionStorage.getItem("bio");
+
+                const textToBLOB = new Blob([data], { type: 'text/plain' });
+                const FileName = 'indexData.txt';
+
+                let newLink = document.createElement("a");
+                newLink.download = FileName;
+
+                newLink.href = window.URL.createObjectURL(textToBLOB);
+                newLink.style.display = "none";
+                document.body.appendChild(newLink);
+
+                newLink.click();
+                
+            }
+        </script>
 
 
     </body>

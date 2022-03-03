@@ -21,10 +21,14 @@
            
         <br>
         <label for="logout">Logout: </label>
-        <input type="submit" id="logout">
+        <input type="submit" id="logout" onclick="processLogout()">
         
 
-       
+        <script>
+            function processLogout() {
+                sessionStorage.clear();
+            }   
+        </script>
 
         
 
