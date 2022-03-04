@@ -40,12 +40,12 @@
                 const Statement = document.getElementById('Pro_Statement');
                 const bio = document.getElementById('Brief_bio');
 
-                sessionStorage.setItem("statement", Statement.value)
-                sessionStorage.setItem("bio", bio.value)
+                sessionStorage.setItem("statement", Statement.value);
+                sessionStorage.setItem("bio", bio.value);
 
                 let data =
-                'Professional Statement: ' + sessionStorage.getItem("statement") + ' \r\r\n' +  
-                'Brief Biographie: ' + sessionStorage.getItem("bio");
+                'Professional Statement: \n' + sessionStorage.getItem("statement") + ' \r\r\n' +  
+                'Brief Biographie: \n' + sessionStorage.getItem("bio");
 
                 const textToBLOB = new Blob([data], { type: 'text/plain' });
                 const FileName = 'indexData.txt';

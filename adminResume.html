@@ -37,7 +37,48 @@
         <textarea name="referees" id="referees" cols="100" rows="10"></textarea><br><br>
 
         <label for="submit_resume">Submit: </label>
-        <input type="submit" id="submit_resume">
+        <input type="submit" id="submit_resume" onclick="submitResume()">
+
+        <script>
+            function submitResume() {
+
+                const qualifications = document.getElementById('qualifications');
+                const skills = document.getElementById('skills');
+                const awards = document.getElementById('awards');
+                const experience = document.getElementById('experience');
+                const referees = document.getElementById('referees');
+                
+                
+                sessionStorage.setItem("Qualifications", qualifications.value);
+                sessionStorage.setItem("Skills", skills.value);
+                sessionStorage.setItem("Awards", awards.value);
+                sessionStorage.setItem("Experience", experience.value);
+                sessionStorage.setItem("Referees", referees.value);
+                
+
+                let data =
+                'Educational Qualifications: \n' + sessionStorage.getItem("Qualifications") + ' \r\r\n' +
+                'Skill Set: \n' + sessionStorage.getItem("Skills") + ' \r\r\n' +
+                'Awards/recognition: \n' + sessionStorage.getItem("Awards") + ' \r\r\n' +
+                'Work Experience: \n' + sessionStorage.getItem("Experience") + ' \r\r\n' +  
+                'Referees: \n' + sessionStorage.getItem("Referees");
+
+                const textToBLOB = new Blob([data], { type: 'text/plain' });
+                const FileName = 'resumeData.txt';
+
+                let newLink = document.createElement("a");
+                newLink.download = FileName;
+
+                newLink.href = window.URL.createObjectURL(textToBLOB);
+                newLink.style.display = "none";
+                document.body.appendChild(newLink);
+
+                newLink.click();
+                
+            }
+        </script>
+
+
     </body>
 
 </html>

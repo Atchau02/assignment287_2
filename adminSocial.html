@@ -30,7 +30,38 @@
         <input type="text" id="social3" style="width:75%;"><br><br>
 
         <label for="submit_social">submitSocial: </label>
-        <input type="submit" id="submit_social">
+        <input type="submit" id="submit_social" onclick="submitSocial()">
+
+        <script>
+            function submitSocial() {
+
+                const link1 = document.getElementById('social1');
+                const link2 = document.getElementById('social2');
+                const link3 = document.getElementById('social3');
+
+                sessionStorage.setItem("Social1", link1.value);
+                sessionStorage.setItem("Social2", link2.value);
+                sessionStorage.setItem("Social3", link3.value);
+
+                let data =
+                'Social Link 1: \n' + sessionStorage.getItem("Social1") + ' \r\r\n' +
+                'Social Link 2: \n' + sessionStorage.getItem("Social2") + ' \r\r\n' +
+                'Social Link 3: \n' + sessionStorage.getItem("Social3");
+
+                const textToBLOB = new Blob([data], { type: 'text/plain' });
+                const FileName = 'socialData.txt';
+
+                let newLink = document.createElement("a");
+                newLink.download = FileName;
+
+                newLink.href = window.URL.createObjectURL(textToBLOB);
+                newLink.style.display = "none";
+                document.body.appendChild(newLink);
+
+                newLink.click();
+                
+            }
+        </script>
         
         
     </body>

@@ -24,7 +24,34 @@
         <textarea name="projects" id="projects" cols="100" rows="10"></textarea><br><br>
 
         <label for="submit_projects">Submit: </label>
-        <input type="submit" id="submit_projects">
+        <input type="submit" id="submit_projects" onclick="submitProjects()">
+
+        <script>
+            function submitProjects() {
+
+                const projects = document.getElementById('projects');
+
+                sessionStorage.setItem("Projects", projects.value);
+                
+
+                let data =
+                'Projects: \n' + sessionStorage.getItem("Projects");
+                
+
+                const textToBLOB = new Blob([data], { type: 'text/plain' });
+                const FileName = 'projectsData.txt';
+
+                let newLink = document.createElement("a");
+                newLink.download = FileName;
+
+                newLink.href = window.URL.createObjectURL(textToBLOB);
+                newLink.style.display = "none";
+                document.body.appendChild(newLink);
+
+                newLink.click();
+                
+            }
+        </script>
 
     </body>
 
