@@ -8,14 +8,14 @@
 
     <body>
        
-        <table id="display">
+        <table class="banner">
             <tr>
-                <th><a href="adminIndex.html">Home</a></th>
-                <th><a href="adminResume.html">Resume</a></th>
-                <th><a href="adminProjects.html">Projects</a></th>
-                <th><a href="adminContact.html">Contact</a></th>
-                <th><a href="adminSocial.html">Social</a></th>
-                <th><a href="logout.html">Admin</a></th>
+                <th class="bannerHeader"><a href="adminIndex.html">Home</a></th>
+                <th class="bannerHeader"><a href="adminResume.html">Resume</a></th>
+                <th class="bannerHeader"><a href="adminProjects.html">Projects</a></th>
+                <th class="bannerHeader"><a href="adminContact.html">Contact</a></th>
+                <th class="bannerHeader"><a href="adminSocial.html">Social</a></th>
+                <th class="bannerHeader"><a href="logout.html">Admin</a></th>
             </tr>
         </table>
 
@@ -28,7 +28,7 @@
     
                 <td colspan="3">
     
-                    <textarea id="displayWin" cols="100" rows="25"></textarea>
+                    <textarea id="displayWin" cols="100" rows="25" readonly></textarea>
     
                 </td>
     
@@ -48,18 +48,38 @@
     
             <tr>
     
-                <td>&nbsp;</td>
+                
     
-                <td> submit button </td>
-    
+                <td style="text-align:right;"> <br>
+                    <label for="read">ReadMessage: </label>
+                    <input type="submit" id="read" onclick="ReadMessage()"> </td>
+                </td>
             </tr>
     
         </table>
 
 
-        <br>
-        <label for="read">ReadMessage</label><br><br>
-        <input type="submit" id="read">
+        <script>
+            function ReadMessage() {
+
+			 var uploadFile = document.getElementById("uploadFile").files[0];
+
+		 
+
+			 var fileReader = new FileReader();
+
+			 fileReader.onload = function(fileLoadedEvent) {
+
+				 var elemHdl = document.getElementById("displayWin");
+
+				 elemHdl.value = fileLoadedEvent.target.result;
+
+			 };
+
+			 fileReader.readAsText(uploadFile, "UTF-8");
+
+		 }
+        </script>
 
 
 

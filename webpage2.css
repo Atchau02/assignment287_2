@@ -1,4 +1,4 @@
-table, th{
+.banner, .bannerHeader{
     
     border: 1px solid black;
     border-collapse: collapse;
@@ -10,8 +10,7 @@ table, th{
     
 }
 
-table{
+.banner{
     width: 100%;  
 }
-
 
